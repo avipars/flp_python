@@ -1,5 +1,6 @@
 # %% Question 1 Pentagonal Numbers for values >=1
 import functools
+import os
 # part a
 def pentaNumRange(n1, n2):
     # no loops allowed 
@@ -32,14 +33,19 @@ def printFn(line):
 # functional programming version
 def printFunctional(pentaList):
     # list mapped
-    listMap = lambda i : pentaList[i, i*10] 
-    map(printFn, listMap)
+    map(printFn, list(map( lambda i : pentaList[i, i+10]), range(0,len(pentaList),10)))
+    return 
 
 def main():
     result = getAndProcessInput()
     if result == None: 
         print("n1 and/or n2 were created invalidly")
+        sys.exit()
     else:
         printWithLoop(result)
+        printFunctional(pentaNumRange(1,5))
+        print("Bye")
 
-main()
+
+if __name__ == "__main__":
+    main()
