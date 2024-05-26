@@ -32,11 +32,11 @@ def printFn(line):
     print(line)
     return None
 
-# functional programming version
-def printFunctional(pentaList):
-    # list mapped
-    map(printFn, list(map( lambda i : pentaList[i, i+10]), range(0,len(pentaList),10)))
-    return 
+# # functional programming version
+# def printFunctional(pentaList):
+#     # list mapped
+#     map(printFn, list(map( lambda i : pentaList[i, i+10]), range(0,len(pentaList),10)))
+#     return 
 
 def printHelper1(L):
     for i in range(0,len(L),10):

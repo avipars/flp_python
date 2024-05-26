@@ -24,17 +24,19 @@ def sumDigits1(n: int) -> int:
     digits = decompose_digits(n) # get the digits
     return sum(digits) # sum the digits
 
+def int_to_list(n):
+    return list(map(lambda x: int(x), str(n)))
 def sumDigits2(n):
-    l = list(map(lambda x: x*2, 'hello'))
-
-    l = list(map(lambda x: int(x)*2, '123456'))
+    return sum(int_to_list(n))
 
 def main():
     n = getAndProcessInput()
     if n == None: 
         print("n was created invalidly")
     else:
+        print("With loop: ")
         print(sumDigits1(n))
-        # print(sumDigits2(n))
+        print("with functional")
+        print(sumDigits2(n))
 if __name__ == "__main__":
     main()
