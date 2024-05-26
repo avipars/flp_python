@@ -24,11 +24,10 @@ def sumDigits1(n: int) -> int:
     digits = decompose_digits(n) # get the digits
     return sum(digits) # sum the digits
 
+def sumDigits2(n):
+    l = list(map(lambda x: x*2, 'hello'))
 
-# def sumDigits2(n):
-#     l = list(map(lambda x: x*2, 'hello'))
-
-#     l = list(map(lambda x: int(x)*2, '123456'))
+    l = list(map(lambda x: int(x)*2, '123456'))
 
 def main():
     n = getAndProcessInput()
