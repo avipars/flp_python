@@ -1,14 +1,7 @@
 # %% Question 3 reverse ints
 # Avraham Parshan 341419323
+from helpers import *
 
-def getAndProcessInput():
-    n = input("Enter n: ")
-
-    # check if n is a valid natural number >=1 (from string)
-    if(n.isdigit() and int(n) >= 1):
-        return int(n)
-    else:
-        return None
 
 def reverseNum0(n: int):
     """
@@ -27,19 +20,6 @@ def reverseNum1(n: int):
     """
     arr = str(n)[::-1] #convert to string, then use python trick
     return int(arr)
-
-
-
-def int_to_list(n):
-    """from q2 but modified to be arr of string chars
-    """
-    return list(map(lambda x: str(x), str(n)))
-
-def reverseNum2(n: int):
-    """
-    use functional version
-    """
-    return''.join(list(reversed(int_to_list(n))))
 
 def main():
     num = getAndProcessInput()

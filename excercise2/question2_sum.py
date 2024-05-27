@@ -1,15 +1,6 @@
 # %% Question 2 natural number sum
 # Avraham Parshan 341419323
-
-
-def getAndProcessInput():
-    n = input("Enter n: ")
-
-    # check if n is a valid natural number >=1 (from string)
-    if(n.isdigit() and int(n) >= 1):
-        return int(n)
-    else:
-        return None
+from helpers import *
     
 def decompose_digits(n: int) -> list:
     if n == 0:  # Handle the edge case where n is 0
@@ -24,10 +15,11 @@ def sumDigits1(n: int) -> int:
     digits = decompose_digits(n) # get the digits
     return sum(digits) # sum the digits
 
-def int_to_list(n):
+def int_to_list2(n):
     return list(map(lambda x: int(x), str(n)))
+
 def sumDigits2(n):
-    return sum(int_to_list(n))
+    return sum(int_to_list2(n))
 
 def main():
     n = getAndProcessInput()
