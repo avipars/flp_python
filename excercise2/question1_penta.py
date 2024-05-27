@@ -3,24 +3,24 @@
 import functools
 import os
 # part a
-def pentaNumRange(n1, n2):
+def penta_num_range(n1, n2):
     # no loops allowed 
-    getPentaNum = lambda n: n*(3*n-1)/2
-    return list(map(getPentaNum, range(n1, n2))) #[n1,n2)
+    penta = lambda n: n*(3*n-1)/2
+    return list(map(penta, range(n1, n2))) #[n1,n2)
 
 # part b
-def getAndProcessInput():
+def get_and_process_input():
     n1 = eval(input("Enter n1: "))
     n2 = eval(input("Enter n2: "))
 
     # check if n1 < n2, and n1, n2 >= 1 and both are ints
     if(isinstance(n1, int) and isinstance(n2, int) and n1 >= 1 and n2 > 1 and n1 < n2):
-        return pentaNumRange(n1,n2)
+        return penta_num_range(n1,n2)
     else:
         return None
 
 # for loop version
-def printWithLoop(pentaList):
+def print_with_loop(pentaList):
     # print 10 items per line
     for i in range(0,len(pentaList),10):
         print(pentaList[i:i+10])
@@ -28,17 +28,17 @@ def printWithLoop(pentaList):
         #     print() # new line
         # print(pentaList[i], end=" ") # print item
 
-def printFn(line):
+def print_fn(line):
     print(line)
     return None
 
 # # functional programming version
-# def printFunctional(pentaList):
+# def print_functional(pentaList):
 #     # list mapped
-#     map(printFn, list(map( lambda i : pentaList[i, i+10]), range(0,len(pentaList),10)))
+#     map(print_fn, list(map( lambda i : pentaList[i, i+10]), range(0,len(pentaList),10)))
 #     return 
 
-def printHelper1(L):
+def print_helper1(L):
     for i in range(0,len(L),10):
         print(L[i:i+10])
 #
@@ -47,19 +47,19 @@ def prtprepare(line):
     lstStr  = ','.join(strLine) + '\n'
     return lstStr
 #
-def printFunctional(L):
+def print_functional(L):
     lines = ''.join(map(prtprepare,map(lambda i : L[i:i+10], range(0, len(L), 10))))
     print(lines)
     
 def main():
-    result = getAndProcessInput()
+    result = get_and_process_input()
     if result == None: 
         print("n1 and/or n2 were created invalidly")
     else:
         print("With loop: ")
-        printWithLoop(result)
+        print_with_loop(result)
         print("With functional: ")
-        printFunctional(result)
+        print_functional(result)
         print("Bye")
 
 

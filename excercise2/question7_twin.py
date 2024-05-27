@@ -14,7 +14,6 @@ def remove_non_twins(n):
     def fn(x): return x+2 in all_prims
     return list(filter(fn, all_prims))
 
-
 def convert_to_dict(lst):
     def fn(x): return x+2
     return dict(zip(lst, map(fn, lst)))
@@ -22,15 +21,11 @@ def convert_to_dict(lst):
 def twinp(n):
     lst = remove_non_twins(n)
     dct = convert_to_dict(lst)
-    return format_twin(dct)
+    return dct
 
-def printer(key, val):
-    print(f"key: {key}, val")
-def format_twin(dct):
-    # functional way to print stuff in dic
 
 def main():
-    num = getAndProcessInput()
+    num = get_and_process_input()
     if num is None:
         print("Invalid input")
     else:

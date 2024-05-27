@@ -11,24 +11,24 @@ def decompose_digits(n: int) -> list:
         n //= 10 # integer division (get rid of last digit)
     return digits # return array of digits
 
-def sumDigits1(n: int) -> int:
+def sum_digits1(n: int) -> int:
     digits = decompose_digits(n) # get the digits
     return sum(digits) # sum the digits
 
 def int_to_list2(n):
     return list(map(lambda x: int(x), str(n)))
 
-def sumDigits2(n):
+def sum_digits2(n):
     return sum(int_to_list2(n))
 
 def main():
-    n = getAndProcessInput()
+    n = get_and_process_input("Enter an integer number n (positive or negative): ", True)
     if n == None: 
         print("n was created invalidly")
     else:
         print("With loop: ")
-        print(sumDigits1(n))
+        print(sum_digits1(n))
         print("with functional")
-        print(sumDigits2(n))
+        print(sum_digits2(n))
 if __name__ == "__main__":
     main()

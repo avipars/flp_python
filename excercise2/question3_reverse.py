@@ -3,7 +3,7 @@
 from helpers import *
 
 
-def reverseNum0(n: int):
+def reverse_num0(n: int):
     """
     basic way to reverse
     """
@@ -14,7 +14,7 @@ def reverseNum0(n: int):
         cop //=  10 #integer division
     return reverse
 
-def reverseNum1(n: int): 
+def reverse_num1(n: int): 
     """
     use splice/slice to reverse string
     """
@@ -22,16 +22,16 @@ def reverseNum1(n: int):
     return int(arr)
 
 def main():
-    num = getAndProcessInput()
+    num = get_and_process_input("Enter an integer number n (positive or negative): ", True)
     if num is None:
         print("Invalid input")
     else:
         print("basic way loop")
-        print(reverseNum0(num))
+        print(reverse_num0(num))
         print("list reverse slice")
-        print(reverseNum1(num))
+        print(reverse_num1(num))
         print("functional way")
-        print(reverseNum2(num))
+        print(reverse_num2(num))
 
 if __name__ == "__main__":
     main()

@@ -6,20 +6,20 @@ def pi_helper(n):
     form = lambda i : ((-1)**(i+1))/(2*i - 1)
     return list(map(form, range(1, n+1)))
 
-def myprint(line):
+def printer(line):
     print(line)
     return None
 
-def printSeriesFunc(n):
+def print_series(n):
     """
     functional way
     range is [x,y), and arrays start from 0 which doesnt interest us
     so i changed to 1, n+1 to meet requirements
     """
     # get same results but without loop - ie with func tools
-    return list(map(printCurr,range(1,n+1)))
+    return list(map(print_cur,range(1,n+1)))
 
-def printCurr(j: int):
+def print_cur(j: int):
     print(f"i = {j}, m(i) = {m(j)}")
 
 def m(n):
@@ -34,12 +34,12 @@ def verify(n):
     return res
 
 def main():
-    num = getAndProcessInput()
+    num = get_and_process_input()
     if num is None:
         print("Invalid input")
     else:
         print(f"Actual solution requested:")
-        printSeriesFunc(num)
+        print_series(num)
         
         print("verify result with another function")
         print(verify(num))

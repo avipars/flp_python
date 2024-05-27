@@ -21,7 +21,7 @@ def printSeries(L):
     for j in range(1,len(L)):
         print(f"i = {j}, m(i) = {m(j)}")
 
-def printSeriesFunc(n):
+def print_series(n):
     """
     functional way
     range is [x,y), and arrays start from 0 which doesnt interest us
@@ -33,7 +33,7 @@ def printSeriesFunc(n):
 # todo if i have time, find a way to not call m(j) for each term and rather take previous sum and add it to curr
     
 def main():
-    num = getAndProcessInput()
+    num = get_and_process_input()
     if num is None:
         print("Invalid input")
     else:
@@ -41,6 +41,6 @@ def main():
         # print(f"array: {series(num)}")
         print(f"Actual solution requested:")
         # printSeries(series(num))
-        printSeriesFunc(num)
+        print_series(num)
 if __name__ == "__main__":
     main()

@@ -3,22 +3,22 @@
 from helpers import *
 
 
-def isPalindrome(n):
+def is_palindrome(n):
     """
     leading zeros are chopped off (int)
     """
-    rev = reverseNum2(n)
+    rev = reverse_num2(n)
     if int(rev) == int(n):
         return "it is a palindrome!!"
     else:
         return "it is not a palindrome"
     
 def main():
-    num = getAndProcessInput()
+    num = get_and_process_input("Enter an integer number n (positive or negative): ", True)
     if num is None:
         print("Invalid input")
     else:
-        print(isPalindrome(num))
+        print(is_palindrome(num))
         
 if __name__ == "__main__":
     main()
