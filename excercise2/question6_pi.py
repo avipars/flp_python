@@ -2,7 +2,10 @@
 # Avraham Parshan 341419323
 from helpers import *
 
-def pi(n: int):
+def pi_helper():
+    form = lambda i : ((-1)**(i+1))/(2*i - 1)
+    
+# def pi(n: int):
 
 
 def main():
