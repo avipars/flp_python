@@ -1,6 +1,3 @@
-#
-#
-#
 import sys
 from helpers import *
 #

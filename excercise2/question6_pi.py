@@ -4,7 +4,7 @@ from helpers import *
 
 
 def pi_helper(n):
-    form = lambda i : ((-1)**(i+1))/(2*i - 1)
+    form = (lambda i: ((-1)**(i+1))/(2*i - 1))
     return list(map(form, range(1, n+1)))
 
 

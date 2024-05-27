@@ -11,12 +11,12 @@ from eratosthenes import napa
 
 def remove_non_twins(n):
     all_prims = napa(n)  # list of all primes
-    def fn(x): return x+2 in all_prims
+    fn = (lambda i:  i+2 in all_prims)
     return list(filter(fn, all_prims))
 
 
 def convert_to_dict(lst):
-    def fn(x): return x+2
+    fn = (lambda i: i+2)
     return dict(zip(lst, map(fn, lst)))
 
 

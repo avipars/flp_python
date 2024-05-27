@@ -19,11 +19,13 @@ def get_and_process_input(prompt=None, allow_negative=False, absolute=False):
     except ValueError:  # not an int
         return None
 
+
 def abs(n: int):
     if (n < 0):
         return -n
     else:
         return n
+
 
 def int_to_list(n):
     """from q2 but modified to be arr of string chars

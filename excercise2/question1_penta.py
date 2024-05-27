@@ -7,7 +7,7 @@ import os
 
 def penta_num_range(n1, n2):
     # no loops allowed
-    penta = lambda n: n*(3*n-1)/2
+    penta = (lambda n: n*(3*n-1)/2)
     return list(map(penta, range(n1, n2)))  # [n1,n2)
 
 # part b
@@ -23,6 +23,7 @@ def get_and_process_input():
     else:
         return None
 
+
 def print_with_loop(lst):
     """
     Better looking and less code
@@ -33,14 +34,15 @@ def print_with_loop(lst):
         print(*lst[i:i+skip_by])
         # but that gave us something looking like an array
 
+
 def print_with_loop_old(pentaList):
     """
     easier to understand but more code
     """
     for i in range(0, len(pentaList)):
-        if (i % 10 == 0) and i> 0: # multiple of 10 dont print first blank 
-             print() # new line
-        print(pentaList[i], end=" ") # print item
+        if (i % 10 == 0) and i > 0:  # multiple of 10 dont print first blank
+            print()  # new line
+        print(pentaList[i], end=" ")  # print item
 
 
 def print_fn(line):
@@ -57,6 +59,7 @@ def print_fn(line):
 def print_helper1(L):
     for i in range(0, len(L), 10):
         print(L[i:i+10])
+
 
 def prtprepare(line):
     strLine = map(str, line)
