@@ -24,7 +24,14 @@ def printCurr(j: int):
 
 def m(n):
     # sums up series
-    return sum(series(n))
+    return sum(4 * pi_helper(n))
+
+def verify(n):
+    sum = 0
+    for i in range(1,n+1):
+        sum +=((-1)**(i+1) ) / (2*i-1)
+    res = 4*sum
+    return res
 
 def main():
     num = getAndProcessInput()
@@ -32,6 +39,9 @@ def main():
         print("Invalid input")
     else:
         print(f"Actual solution requested:")
-
+        printSeriesFunc(num)
+        
+        print("verify result with another function")
+        print(verify(num))
 if __name__ == "__main__":
     main()

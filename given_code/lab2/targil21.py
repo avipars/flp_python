@@ -27,7 +27,7 @@ def main():
       print ("ERROR: the input is incorrect!")
       sys.exit()
     n1, n2 = inValues
-    list(pentaprt(pentaNumRange(n1, n2)))
+    pentaprt(pentaNumRange(n1, n2))
     print ("Bye")
 
 main()    
