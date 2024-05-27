@@ -9,7 +9,7 @@ from eratosthenes import napa
 # 3,5,
 
 def is_twin(n):
-    
+    fn = lambda x: x-2 or x+2
     
 def twinp(n):
     #dict 
