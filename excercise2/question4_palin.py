@@ -2,7 +2,6 @@
 # Avraham Parshan 341419323
 from helpers import *
 
-
 def is_palindrome(n):
     """
     leading zeros are chopped off (int)
@@ -14,9 +13,9 @@ def is_palindrome(n):
         return "it is not a palindrome"
     
 def main():
-    num = get_and_process_input("Enter an integer number n (positive or negative): ", True)
+    num = get_and_process_input(prompt="Enter an integer number n (positive or negative): ", allow_negative=True,absolute=True)
     if num is None:
-        print("Invalid input")
+        print("ERROR: Input number is incorrect !")
     else:
         print(is_palindrome(num))
         

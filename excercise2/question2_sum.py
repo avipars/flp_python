@@ -22,9 +22,9 @@ def sum_digits2(n):
     return sum(int_to_list2(n))
 
 def main():
-    n = get_and_process_input("Enter an integer number n (positive or negative): ", True)
+    n = get_and_process_input(prompt="Enter an integer number n (positive or negative): ", allow_negative=True, absolute=True)
     if n == None: 
-        print("n was created invalidly")
+        print("ERROR: Input number is incorrect !")
     else:
         print("With loop: ")
         print(sum_digits1(n))

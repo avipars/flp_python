@@ -14,9 +14,11 @@ def remove_non_twins(n):
     def fn(x): return x+2 in all_prims
     return list(filter(fn, all_prims))
 
+
 def convert_to_dict(lst):
     def fn(x): return x+2
     return dict(zip(lst, map(fn, lst)))
+
 
 def twinp(n):
     lst = remove_non_twins(n)
@@ -29,7 +31,6 @@ def main():
     if num is None:
         print("Invalid input")
     else:
-        print(f"Actual solution requested:")
         print(twinp(num))
 
 

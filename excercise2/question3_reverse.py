@@ -22,16 +22,19 @@ def reverse_num1(n: int):
     return int(arr)
 
 def main():
-    num = get_and_process_input("Enter an integer number n (positive or negative): ", True)
+    num = get_and_process_input("Enter an integer number n (positive or negative): ", allow_negative=True)
     if num is None:
-        print("Invalid input")
+        print("ERROR: Input number is incorrect !")
     else:
+        sign = -1 if num < 0 else 1 #ternary
+
         print("basic way loop")
-        print(reverse_num0(num))
+        print(sign*reverse_num0(abs(num)))
         print("list reverse slice")
-        print(reverse_num1(num))
+        print(sign*reverse_num1(abs(num)))
         print("functional way")
-        print(reverse_num2(num))
+        # functional way - in helper file as used > 1 time
+        print(sign*reverse_num2(abs(num)))
 
 if __name__ == "__main__":
     main()
