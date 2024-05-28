@@ -2,6 +2,11 @@ import sys
 from helpers import *
 #
 
+# # functional programming version
+# def print_functional(pentaList):
+#     # list mapped
+#     map(print_fn, list(map( lambda i : pentaList[i, i+10]), range(0,len(pentaList),10)))
+#     return
 
 def pentaNumRange(n1, n2):
     return list(map(lambda n: n*(3*n-1)/2, range(n1, n2)))

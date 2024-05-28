@@ -45,21 +45,9 @@ def print_with_loop_old(pentaList):
         print(pentaList[i], end=" ")  # print item
 
 
-def print_fn(line):
-    print(line)
-    return None
-
-# # functional programming version
-# def print_functional(pentaList):
-#     # list mapped
-#     map(print_fn, list(map( lambda i : pentaList[i, i+10]), range(0,len(pentaList),10)))
-#     return
-
-
 def print_helper1(L):
     for i in range(0, len(L), 10):
         print(L[i:i+10])
-
 
 def prtprepare(line):
     strLine = map(str, line)
@@ -79,13 +67,12 @@ def main():
     if result == None:
         print("ERROR: the values must be positive integers and n2 > n1")
     else:
-        print("With loop: ")
+        print("old loop:")
+        print_with_loop_old(result)
+        print("new loop: ")
         print_with_loop(result)
         print("With functional: ")
         print_functional(result)
-
-        print("old for:")
-        print_with_loop_old(result)
         print("Bye")
 
 
