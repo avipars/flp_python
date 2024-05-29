@@ -29,11 +29,11 @@ def main():
     if num is None:
         print("ERROR: Input number is incorrect !")
     else:
-        sign = -1 if num < 0 else 1  # ternary
+        sign = -1 if num < 0 else 1  # ternary operator, i said if they give a negative number, reverse it and put back the negative sign
 
         print("basic way loop")
         print(sign*reverse_num0(abs(num)))
-        print("list reverse slice")
+        print("list reverse slice way")
         print(sign*reverse_num1(abs(num)))
         print("functional way")
         # functional way - in helper file as used > 1 time

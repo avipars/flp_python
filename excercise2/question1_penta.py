@@ -7,7 +7,7 @@ import os
 
 def penta_num_range(n1, n2):
     # no loops allowed
-    penta = (lambda n: n*(3*n-1)/2)
+    penta = (lambda n: n * (3 * n - 1) / 2)
     return list(map(penta, range(n1, n2)))  # [n1,n2)
 
 # part b
@@ -31,7 +31,7 @@ def print_with_loop(lst):
     skip_by = 10    # print 10 items per line
     for i in range(0, len(lst), skip_by):
         # was this before         print(pentaList[i:i+10])
-        print(*lst[i:i+skip_by])
+        print(*lst[i:i + skip_by])
         # but that gave us something looking like an array
 
 
@@ -47,9 +47,10 @@ def print_with_loop_old(pentaList):
 
 def print_helper1(L):
     for i in range(0, len(L), 10):
-        print(L[i:i+10])
+        print(L[i:i + 10])
 
-def prtprepare(line):
+
+def prnt(line):
     strLine = map(str, line)
     lstStr = ' '.join(strLine) + '\n'
     return lstStr
@@ -57,9 +58,11 @@ def prtprepare(line):
 
 
 def print_functional(L):
-    lines = ''.join(
-        map(prtprepare, map(lambda i: L[i:i+10], range(0, len(L), 10))))
-    print(lines)
+    """
+    every 10 numbers get a new line
+    """
+    print(''.join(
+        map(prnt, map(lambda i: L[i:i + 10], range(0, len(L), 10)))))
 
 
 def main():
@@ -67,9 +70,9 @@ def main():
     if result == None:
         print("ERROR: the values must be positive integers and n2 > n1")
     else:
-        print("old loop:")
+        print("1st loop:")
         print_with_loop_old(result)
-        print("new loop: ")
+        print("2nd loop: ")
         print_with_loop(result)
         print("With functional: ")
         print_functional(result)

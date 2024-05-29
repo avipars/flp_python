@@ -1,34 +1,66 @@
 # % menu with options for user to run any of the previous hw functions
 from helpers import *
-import question1_penta as p1
+import question1_penta as q1
+import question2_sum as q2
+import question3_reverse as q3
+import question4_palin as q4
+import question5_series as q5
+import question6_pi as q6
+import question7_twin as q7
+import question8_dict as q8
+
 
 def check_input(inp):
+    """
+    basic input check
+    """
     if isinstance(inp, int) and inp >= 0:
         return inp
     elif isinstance(inp, str) and inp.isnumeric() and int(inp) >= 0:
         return int(inp)
     else:
         return None
-def main_menu():
-    print("Please select an option from the menu :")
-    # choice = int(input())
-    print("0. Quit\n1. Penta\n")
-    # menu_dict = {0: ("Quit", lambda a: print("1")), 1: ("Penta", print("tbd"))}
-    dict2 = {0: p1.main(),5: p2(),3: p2, 2: lambda b: print("1"),1: lambda a: quit, 7: p3}
-    # print(*menu_dict)
-    # print(menu_dict[0][0])
-    print(dict2[0])
-    # print the menu options without executing functions
-    # for key, value in menu_dict.items():
-    #     print(key, value[0])
-def p2():
-    print("p2")
 
-def p3():
-    print("p3")
+
+def main_menu():
+    """
+    main menu for user to select which function to run
+    """
+    print("Please select an option from the menu :")
+    print("""
+          0: Quit
+          1: Pentagonal Numbers
+          2: Sum Digits
+          3: Reverse Digits
+          4: Palindrome
+          5: Series
+          6: Pi Digits
+          7: Twin Primes
+          8: Dictionaries
+          """)
+
+    options = {0: quit,
+               1: q1.main,
+               2: q2.main,
+               3: q3.main,
+               4: q4.main,
+               5: q5.main,
+               6: q6.main,
+               7: q7.main,
+               8: q8.main
+               }
+    
+    inp = check_input(input("Enter your choice: "))
+    if inp is not None and inp in options.keys():
+        options[inp]() # run the function
+        main_menu()
+    else:
+        print("Invalid input")
+        main_menu()
+
 def quit():
     print("Goodbye!")
     exit()
-    
+
 if __name__ == "__main__":
     main_menu()

@@ -4,8 +4,8 @@ from helpers import *
 
 
 def series(n: int):
-    form = (lambda i: i / (i+1))
-    return list(map(form, range(0, n+1)))  # [1,n+1) = [1,n]
+    form = (lambda i: i / (i + 1))
+    return list(map(form, range(0, n + 1)))  # [1,n+1) = [1,n]
 
 
 def m(n):
@@ -17,7 +17,7 @@ def print_one(j: int):
     print(f"{j} {m(j)}")
 
 
-def print_series(L):
+def print_series_loop(L: list):
     """
     non functional way
     """
@@ -26,16 +26,14 @@ def print_series(L):
         print_one(j)
 
 
-def print_series(n):
+def print_series(n: int):
     """
     functional way
-    range is [x,y), and arrays start from 0 which doesnt interest us
+    range is [x,y), and arrays start from 0 which doesn't interest us
     so i changed to 1, n+1 to meet requirements
     """
     # get same results but without loop - ie with func tools
-    return list(map(print_one, range(1, n+1)))
-
-# todo if i have time, find a way to not call m(j) for each term and rather take previous sum and add it to curr
+    return list(map(print_one, range(1, n + 1)))
 
 
 def main():
@@ -43,9 +41,13 @@ def main():
     if num is None:
         print("ERROR: Input number is incorrect!")
     else:
+        print("Loop Version:")
+
         # print(f"total sum: {m(num)}")
         # print(f"array: {series(num)}")
-        # print_series(series(num))
+
+        print_series_loop(series(num))
+        print("Functional version:")
         print_series(num)
 
 

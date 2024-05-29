@@ -34,7 +34,7 @@ def main():
     else:
         print("With loop: ")
         print(sum_digits1(n))
-        print("with functional")
+        print("With functional")
         print(sum_digits2(n))
 
 
