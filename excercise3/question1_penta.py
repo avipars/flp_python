@@ -12,6 +12,8 @@ def penta_num_range(n1, n2):
 
 # part b
 
+def penta_recurse()
+
 
 def get_and_process_input():
     n1 = eval(input("Enter n1: "))
