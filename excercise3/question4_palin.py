@@ -1,6 +1,7 @@
 # %% Question 4  palindrome numbers
 # Avraham Parshan 341419323
 from helpers import *
+from tailrecurse import *
 
 
 def is_palindrome(n):
@@ -14,42 +15,50 @@ def print_result(res: bool):
     if res:
         print("it is a palindrome!!")
     else:
-        print("it is not a palindrome")
+        return "it is not a palindrome"
+
+def is_palindrome_recurse(n):
+    def helper(s, start, end):
+        if start >= end:
+            return True
+        if s[start] != s[end]:
+            return False
+        return helper(s, start + 1, end - 1)
+    
+    s = str(n)
+    return helper(s, 0, len(s) - 1)
+
+def is_palindrome_tail_recurse(n):
+    @tail_call_optimized
+    def helper(s, start, end):
+        if start >= end:
+            return True
+        if s[start] != s[end]:
+            return False
+        return helper(s, start + 1, end - 1)  # Tail recursive call
+    s = str(n)
+    return helper(s, 0, len(s) - 1)
+    
+def pretty_print(res: bool):
+    if res:
+        print("It is a palindrome !!")
+    else:
+        print("It is not a palindrome")
         
-def is_palindrome_recurse(msg: int):
-    # base case
-    if msg < 10: #single digit
-        return True
-    
-    first = msg % 10 #get first digit
-    last = msg // 10 #get last digit
-    if first != last: #compare first and last digits
-        return False
-    if msg >= 10 and msg <= 99: #2 digit case
-        return True 
-    
-    removed_first = msg % 10
-    return is_palindrome_recurse((msg - last * 10) // 10) #strip first and last digits and recurse on the rest
-
-
-    """
-    If the string is made of no letters or just one letter, then it is a palindrome.
-    Otherwise, compare the first and last letters of the string.
-    If the first and last letters differ, then the string is not a palindrome.
-    Otherwise, the first and last letters are the same. Strip them from the string, and determine whether the string that remains is a palindrome. Take the answer for this smaller string and use it as the answer for the original string.
-    """
-
-
 def main():
     num = get_and_process_input(
         prompt="Enter an integer number n (positive or negative): ", allow_negative=True, absolute=True)
     if num is None:
         print("ERROR: Input number is incorrect !")
     else:
+        print("Iterative way")
         print(is_palindrome(num))
         print("non-tail recurse")
         print(is_palindrome_recurse(num))
-
+        print("Recursive way")
+        pretty_print(is_palindrome_recurse(num))
+        print("Tail Recursive way")
+        pretty_print(is_palindrome_tail_recurse(num))
 
 if __name__ == "__main__":
     main()

@@ -2,6 +2,9 @@
 # Avraham Parshan 341419323
 import functools
 import os
+
+from tailrecurse import *
+
 # part a
 
 
@@ -12,7 +15,14 @@ def penta_num_range(n1, n2):
 
 # part b
 
-def penta_recurse()
+def penta_recursive(n1, n2, result):
+    if n1 == n2:
+        return result
+    else:
+        result.append(n1 * (3 * n1 - 1) / 2)
+        return penta_recursive(n1 + 1, n2, result)
+    
+
 
 
 def get_and_process_input():
