@@ -1,6 +1,7 @@
 # %% Question 6 pi approximator
 # Avraham Parshan 341419323
 from helpers import *
+from tailrecurse import *
 
 def pi_helper(n):
     form = (lambda i: ((-1)**(i+1))/(2*i - 1))

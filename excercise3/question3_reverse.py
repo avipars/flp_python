@@ -1,6 +1,7 @@
 # %% Question 3 reverse ints
 # Avraham Parshan 341419323
 from helpers import *
+from tailrecurse import *
 
 
 def reverse_num0(n: int):
@@ -22,6 +23,13 @@ def reverse_num1(n: int):
     arr = str(n)[::-1]  # convert to string, then use python trick
     return int(arr)
 
+def reverse_recursive(n: int):
+    def helper(n, res):
+        if n == 0:
+            return res
+        return helper(n // 10, res * 10 + n % 10)
+    return helper(n, 0)
+
 
 def main():
     num = get_and_process_input(
@@ -39,7 +47,9 @@ def main():
         # functional way - in helper file as used > 1 time
         print(sign*reverse_num2(abs(num)))
 
-
+        print("Recursive way")
+        print(sign*reverse_recursive(abs(num)))
+        
 if __name__ == "__main__":
     main()
 # %%

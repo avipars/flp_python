@@ -1,6 +1,7 @@
 # %% Question 2 natural number sum
 # Avraham Parshan 341419323
 from helpers import *
+from tailrecurse import *
 
 
 def decompose_digits(n: int) -> list:
