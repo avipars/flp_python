@@ -1,4 +1,4 @@
-# %% Question 4  palindrome numbers
+# %% Question 4  palindrome numbers (done)
 # Avraham Parshan 341419323
 from helpers import *
 from tailrecurse import *
