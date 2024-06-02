@@ -13,7 +13,12 @@ def twinp(n):
     keys = lambda p: (p, (p + 2, p - 2))
     return dict(map(keys, twin_helper(napa(n))))
 
-def twinp_recursive(n):
+
+# non tail recursive version of twinp
+
+# Tail recursive version of twinp
+def twinp_recursive_t(n):
+    @tail_call_optimized
     def helper(primes, result):
         if len(primes) < 2:
             return result
@@ -24,7 +29,6 @@ def twinp_recursive(n):
             return helper(primes[1:], result)
     return helper(napa(n), {})
 
-# def twinp_tail_recursive(n):
     
 
 def main():
@@ -34,8 +38,11 @@ def main():
     else:
         print("Iterative way")
         print(twinp(num))
+        
         print("Recursive way")
-        print(twinp_recursive(num))
+        print(twinp_recursive(napa(num)))
+        print("Tail Recursive way")
+        print(twinp_recursive_t(num))
 
 
 if __name__ == "__main__":
