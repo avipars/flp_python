@@ -23,12 +23,27 @@ def reverse_num1(n: int):
     arr = str(n)[::-1]  # convert to string, then use python trick
     return int(arr)
 
-def reverse_recursive(n: int):
+def reverse_recurse(n: int):
+    """
+    recursive way to reverse
+    """
+    if n == 0:
+        return 0
+    else:
+        mo = n % 10
+        fl = n // 10
+        
+        return mo * 10**(len(str(n))-1) + reverse_recurse(fl)
+
+#using tail recursion and closure
+def reverse_recursive_t(n: int):
+    @tail_call_optimized
     def helper(n, res):
         if n == 0:
             return res
         return helper(n // 10, res * 10 + n % 10)
     return helper(n, 0)
+
 
 
 def main():
@@ -45,11 +60,17 @@ def main():
         print(sign*reverse_num1(abs(num)))
         print("functional way")
         # functional way - in helper file as used > 1 time
-        print(sign*reverse_num2(abs(num)))
+        print(sign*int(reverse_num2(abs(num))))
 
-        print("Recursive way")
-        print(sign*reverse_recursive(abs(num)))
+
+        print("recursive way")
+        print(sign*reverse_recurse(abs(num)))
+        print("Tail recursive way")
+        print(sign*reverse_recursive_t(abs(num)))
         
+        print("Recursive way without tail recursion")
+        print(sign*reverse_recursed(abs(num)))  # Output should be 4321
+
 if __name__ == "__main__":
     main()
 # %%

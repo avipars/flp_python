@@ -3,9 +3,9 @@
 from helpers import *
 from tailrecurse import *
 
-def pi_helper(n):
+def pi_helper(n): #-1^(i+1) / 2i - 1
     form = (lambda i: ((-1)**(i+1))/(2*i - 1))
-    return list(map(form, range(1, n+1)))
+    return list(map(form, range(1, n+1))) # n+1 as range is [x,y)
 
 
 def print_series(n):
@@ -17,22 +17,12 @@ def print_series(n):
     # get same results but without loop - ie with func tools
     return list(map(print_cur, range(1, n+1)))
 
-def print_cur(j: int):
+def print_cur(j: int): #prints 1 line of the series
     print(f"{j} {m(j)}")
 
 
 def m(n):
-    # sums up series
-    return sum(4 * pi_helper(n))
-
-# not working
-def series_recurse(n):
-    def helper(i, res):
-        if i > n:
-            return res
-        return helper(i+1, res + ((-1)**(i+1))/(2*i - 1))
-    return helper(1, 0)
-
+    return sum(4 * pi_helper(n))     # sums up series
 
 def verify(n):
     """
@@ -41,9 +31,7 @@ def verify(n):
     sum = 0 
     for i in range(1, n+1): #closed interval
         sum += ((-1)**(i+1)) / (2*i-1)
-        
     return 4*sum
-
 
 def main():
     num = get_and_process_input()
@@ -57,6 +45,8 @@ def main():
         print_series(num)
 
         print(f"Recursive Version:")
-        print(series_recurse(num))
+        
+        
+        print("Tail Recursive Version:")
 if __name__ == "__main__":
     main()

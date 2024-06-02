@@ -38,7 +38,7 @@ def reverse_num2(n: int):
     use functional version
     trailing zeros in original int are chopped off in new part 
     """
-    return ''.join(list(reversed(int_to_list(n))))
+    return "".join(list(reversed(int_to_list(n))))
 
 
 def printer(line):
