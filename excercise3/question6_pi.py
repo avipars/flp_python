@@ -1,4 +1,4 @@
-# %% Question 6 pi approximator
+# %% Question 6 pi approximation
 # Avraham Parshan 341419323
 from helpers import *
 from tailrecurse import *
@@ -7,6 +7,8 @@ def pi_helper(n): #-1^(i+1) / 2i - 1
     form = (lambda i: ((-1)**(i+1))/(2*i - 1))
     return list(map(form, range(1, n+1))) # n+1 as range is [x,y)
 
+def rec_series(n):
+    
 
 def print_series(n):
     """
@@ -44,7 +46,7 @@ def main():
         print(f"Functional Version:")
         print_series(num)
 
-        print(f"Recursive Version:")
+        print("Recursive Version:")
         
         
         print("Tail Recursive Version:")
