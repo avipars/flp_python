@@ -24,7 +24,7 @@ def check_input(inp):
 
 def main_menu():
     """
-    main menu for user to select which function to run
+    main menu for user to select which function to run (recursion)
     """
     print("Please select an option from the menu :")
     print("""

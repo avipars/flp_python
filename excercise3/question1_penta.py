@@ -105,14 +105,14 @@ def print_functional(L):
 
 def print_with_recursive(pentaList: list, index:int=0):
     """
-    Recursive version of print_with_loop
+    Recursive version printing, with every 10 numbers getting a new line
     """
     # Base case: if the index is out of bounds, return
     if index >= len(pentaList):
         return
 
     # Print new line if needed
-    if index > 0 and index % 10 == 0:
+    if index > 0 and index % 10 == 0: #divisible by 10
         print()
 
     # Print the current item without a newline
@@ -136,10 +136,11 @@ def main():
         print_with_loop(res_old)
         print("With functional: ")
         print_functional(res_old)
-        print("With non-tail recursion:")
+        print("\nWith recursion: ")
+        print_with_recursive(penta_non_tail_recursive(n1,n2))
+        print("With tail recursion:")
         print_with_recursive(penta_recursive(n1, n2))
 
-        print("\nWith tail recursion: ")
-        print_with_recursive(penta_non_tail_recursive(n1,n2))
+
 if __name__ == "__main__":
     main()

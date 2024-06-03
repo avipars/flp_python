@@ -36,8 +36,10 @@ def print_series(n: int):
     # get same results but without loop - ie with func tools
     return list(map(print_one, range(1, n + 1)))
 
-# working recursive non tail
 def recurse_series(n):
+    """
+    non tail recursive version
+    """
     # base case n = 1
     assert n >= 1, "n must be >= 1"
     if n == 1:
@@ -50,6 +52,9 @@ def recurse_series(n):
 #tail
 @tail_call_optimized
 def recurse_series_t(n, acc=0.5):
+    """
+    tail recursive version
+    """
     # Base case: n = 1
     print(f"{n}: {acc}")
     if n == 1:

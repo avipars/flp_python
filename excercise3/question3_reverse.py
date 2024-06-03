@@ -27,7 +27,7 @@ def reverse_recurse(n: int):
     """
     recursive way to reverse (non tail)
     """
-    if n == 0 or n == 1:
+    if n < 10:
         return n #base
     else:
         mo = n % 10 # first
@@ -35,7 +35,6 @@ def reverse_recurse(n: int):
         
         return mo * 10**(len(str(n))-1) + reverse_recurse(fl)
 
-#using tail recursion and closure
 def reverse_recursive_t(n: int):
     """
     Closure and tail recursion

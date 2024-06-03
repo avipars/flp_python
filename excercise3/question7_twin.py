@@ -1,3 +1,5 @@
+# %% Question 7 twin primes (done)
+# Avraham Parshan 341419323
 from helpers import *
 from eratosthenes import napa
 from tailrecurse import *
@@ -13,6 +15,19 @@ def twinp(n):
     keys = lambda p: (p, (p + 2, p - 2))
     return dict(map(keys, twin_helper(napa(n))))
 
+def twinp_recursive(primes: list) -> dict:
+    """
+    given a list of primes, return a dictionary of twin primes - recursive
+    """
+    if len(primes) < 2:
+        return {} # no twin primes
+    else:
+        p = primes[0] # first prime
+        if p + 2 in primes: # twin prime
+            return {p: (p + 2, p - 2), **twinp_recursive(primes[1:])} 
+        else:
+            return twinp_recursive(primes[1:])
+        
 def twinp_recursive_t(n):
     """
     # Tail recursive version of twinp
@@ -20,13 +35,13 @@ def twinp_recursive_t(n):
     @tail_call_optimized
     def helper(primes, result):
         if len(primes) < 2:
-            return result
+            return result #base
         else:
             p = primes[0]
-            if p + 2 in primes:
-                result[p] = (p + 2, p - 2)
-            return helper(primes[1:], result)
-    return helper(napa(n), {})
+            if p + 2 in primes: #check 2 ahead
+                result[p] = (p + 2, p - 2) #add to result
+            return helper(primes[1:], result) #go in a level
+    return helper(napa(n), {}) #start with empty dict
 
 
 def main():

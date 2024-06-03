@@ -27,12 +27,17 @@ def sum_digits2(n):
     return sum(int_to_list2(n))
 
 def reg_recursive(n: int)-> int:
-    if n == 0:
-        return 0
-    return n % 10 + reg_recursive(n // 10)
+    """
+    regular recursive version
+    """
+    if n < 10:
+        return n #base case
+    return n % 10 + reg_recursive(n // 10) #extract number and add to the sum
 
-# tail recursive
 def recursive_sum_digits(n: int) -> int:
+    """
+    tail recursive version
+    """
     @tail_call_optimized
     def helper(n, res):
         if n == 0:
