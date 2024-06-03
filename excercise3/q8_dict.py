@@ -57,11 +57,11 @@ def adddicts(d1, d2, d3):
     
     result = {}
     dicts = (d1, d2, d3)
-    all_keys = list(shared) + list(non_shared)
+    all_keys = list(all_shared) + list(non_shared)
     # all_keys.sort(key=lambda k: -key_count_in_dicts(k, dicts))
     # Add keys in sorted order
     for key in all_keys:
-        if key in shared:
+        if key in all_shared:
             values = []
             for d in dicts:
                 if key in d and d[key] not in values:

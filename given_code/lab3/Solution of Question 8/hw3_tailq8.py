@@ -17,7 +17,7 @@ def process_item(D,key):
 
 #@tail_call_optimized
 def item_helper(dicts,key, result = ()):
-   #print ("item_helper ---\n", "dicts=", dicts, "key=", key, "result=", result)
+   print ("item_helper ---\n", "dicts=", dicts, "key=", key, "result=", result)
    if not dicts:
      if len(result) == 1:
        return result[0]
@@ -28,13 +28,13 @@ def item_helper(dicts,key, result = ()):
 
 @tail_call_optimized
 def helper1(keys, dicts, result = ()):
-   #print ("helper1 --- \n", "keys=", keys, "dicts=", dicts, "result=", result)
-   #print ("-----------")
+   print ("helper1 --- \n", "keys=", keys, "dicts=", dicts, "result=", result)
+   print ("-----------")
    if keys == []:
      return result
    else:
      h1 = item_helper(dicts,keys[0])
-     #print ("h1 = ", h1)
+     print ("h1 = ", h1)
      return helper1(keys[1:],dicts, result + ((keys[0], h1),))
     
 def add3dicts(d1,d2,d3):
@@ -47,17 +47,17 @@ def add3dicts(d1,d2,d3):
     notshared  = allkeys - allshared
     dicts = (d1,d2,d3)
     h1 = helper1(list(fullshared), dicts)
-    #print ("h1=", h1)
+    print ("h1=", h1)
     h2 = helper1(list(shared12), dicts)
-    #print ("h2=", h2)
+    print ("h2=", h2)
     h3 = helper1(list(shared13), dicts)
-    #print ("h3=", h3)
+    print ("h3=", h3)
     h4 = helper1(list(shared23), dicts)
-    #print ("h4=", h4)
+    print ("h4=", h4)
     h5 = helper1(list(notshared), dicts)
-    #print ("h5=", h5)
+    print ("h5=", h5)
     h = h1 + h2 + h3 + h4 + h5
-    #print ("h=", h)
+    print ("h=", h)
     return dict(h)
 
 def q8():
