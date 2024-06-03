@@ -81,8 +81,8 @@ def q8():
       print ("ERROR: Input is incorrect!")
     else:
       result_dict = add3dicts(*dicts)
-      print("\n", result_dict)
-      print("\n", sorted(result_dict.items(), key = itemgetter(0)))    
+      print("\nCombined", result_dict)
+      print("\nSort by shared", sorted(result_dict.items(), key = itemgetter(0)))    
 
 if __name__ == "__main__":
     q8()

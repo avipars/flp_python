@@ -95,6 +95,7 @@ def get_dicts(i):
 
 def main():
     quant = 3  # combining 3 dictionaries
+    
     dicts = list(filter(lambda val: isinstance(
         val, dict), map(get_dicts, range(quant))))
 
