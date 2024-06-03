@@ -45,7 +45,6 @@ def reverse_recursive_t(n: int):
     return helper(n, 0)
 
 
-
 def main():
     num = get_and_process_input(
         "Enter an integer number n (positive or negative): ", allow_negative=True)
