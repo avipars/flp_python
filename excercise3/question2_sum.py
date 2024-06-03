@@ -40,10 +40,10 @@ def recursive_sum_digits(n: int) -> int:
     """
     @tail_call_optimized
     def helper(n, res):
-        if n == 0:
-            return res
-        return helper(n // 10, res + n % 10)
-    return helper(n, 0)
+        if n == 0: #base case
+            return res 
+        return helper(n // 10, res + n % 10) #extract number and add to the sum
+    return helper(n, 0) #start the recursion
 
 def main():
     n = get_and_process_input(

@@ -40,9 +40,8 @@ def recurse_series(n):
     """
     non tail recursive version
     """
-    # base case n = 1
     assert n >= 1, "n must be >= 1"
-    if n == 1:
+    if n == 1:   # base case n = 1
         res = 0.5
     else:     # i / (i + 1)
         res = n / (n + 1) + recurse_series(n - 1)
@@ -55,12 +54,11 @@ def recurse_series_t(n, acc=0.5):
     """
     tail recursive version
     """
-    # Base case: n = 1
-    print(f"{n}: {acc}")
-    if n == 1:
+    print(f"{n}: {acc}") # print the current value
+    if n == 1: # base case 
         return acc
     else:
-        return recurse_series_t(n - 1, acc + n / (n + 1))
+        return recurse_series_t(n - 1, acc + n / (n + 1)) # go in a level
     
 def main():
     num = get_and_process_input("Enter a Natural number n: ")

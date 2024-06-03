@@ -9,18 +9,15 @@ def pi_helper(n): #-1^(i+1) / 2i - 1
 
 def recursive_pi(n):
     """
-    wrapper function for the pi series 
+    wrapper function for the pi series non tail recursive
     """
+    def recursive_pi_helper(n):
+        if n == 0: #base case
+            return n # = 0 
+        return ((-1)**(n+1))/(2*n - 1) + recursive_pi_helper(n-1) #formula + accumulator
     return 4 * recursive_pi_helper(n) #4 * sum of series
 
 
-def recursive_pi_helper(n):
-    """
-    non tail recursive version
-    """
-    if n == 0: #base case
-        return n
-    return ((-1)**(n+1))/(2*n - 1) + recursive_pi_helper(n-1) #formula + accumulator
 
 def recursive_pi_t(n):
     """
@@ -31,7 +28,7 @@ def recursive_pi_t(n):
         if n == 0:
             return res #base case
         return helper(n - 1, res + ((-1)**(n+1))/(2*n - 1)) #actual tail call 
-    return 4 * helper(n, 0) #only happens once 
+    return 4 * helper(n, 0) #only happens once, whole sum x 4
 
 def print_series(n):
     """
@@ -47,7 +44,7 @@ def print_cur(j: int): #prints 1 line of the series
 
 
 def m(n):
-    return sum(4 * pi_helper(n))     # sums up series
+    return sum(4 * pi_helper(n))  # sums up series
 
 def verify(n):
     """

@@ -40,7 +40,14 @@ def reverse_num2(n: int):
     """
     return "".join(list(reversed(int_to_list(n))))
 
-
+def msd(n: int) -> int:
+    """
+    most significant digit of n, first digit from left
+    used for reversing digits and palindrome functions
+    """
+    return 10**(len(str(n))-1) # highest power of 10 less than or equal to n
+    # ie for 1234, it would be 1000 = 10^3
+    
 def printer(line):
     print(line)
     return None

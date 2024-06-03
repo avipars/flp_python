@@ -24,7 +24,8 @@ def twinp_recursive(primes: list) -> dict:
     else:
         p = primes[0] # first prime
         if p + 2 in primes: # twin prime
-            return {p: (p + 2, p - 2), **twinp_recursive(primes[1:])} 
+            #unpack the dict and add the new twin prime
+            return {p: (p + 2, p - 2), **twinp_recursive(primes[1:])}  # add to result
         else:
             return twinp_recursive(primes[1:])
         
@@ -35,7 +36,7 @@ def twinp_recursive_t(n):
     @tail_call_optimized
     def helper(primes, result):
         if len(primes) < 2:
-            return result #base
+            return result #base case no twin primes
         else:
             p = primes[0]
             if p + 2 in primes: #check 2 ahead

@@ -13,25 +13,31 @@ def is_palindrome(n:int):
 
 def print_result(res: bool):
     if res:
-        print("it is a palindrome!!")
+        print("It is a palindrome!!")
     else:
-        print( "it is not a palindrome")
+        print( "It is not a palindrome")
 
 def is_palindrome_recurse(n: int):
-    s = str(n)
-    e = len(s)-1
-    return recurse_help(s,0,e)
+    """
+    used string to make it easier to deal with 
+    this is tail recursive
+    """
 
-def recurse_help(s:str, start:int, end:int):
-    """
-    non tail recursive version 
-    """
-    if s[start] != s[end]:
-        return False
-    elif start >= end: 
-        return True
-    else:
-        return recurse_help(s, start+1, end -1)
+    @tail_call_optimized
+    def recurse_help(s:str, start:int = 0, end:int = 1):
+        """
+        tail recursive helper
+        """
+        if s[start] != s[end]:
+            return False
+        elif start >= end: 
+            return True
+        else:
+            return recurse_help(s, start+1, end -1)
+    s = str(n) #convert to string as its much easier to deal with 
+    e = len(s)-1
+    return recurse_help(s,0,e) # call tail with params to start
+
         
 def is_palindrome_recursive_r(n):
     """
@@ -42,32 +48,15 @@ def is_palindrome_recursive_r(n):
         return True
 
     # Get the first and last digits of the number
-    first_digit = n // 10**(len(str(n)) - 1)
+    first_digit = n // msd(n) #call a helper fn i made
     last_digit = n % 10
 
     # Check if the first and last digits match, and recursively check the remaining digits
-    return first_digit == last_digit and is_palindrome_recursive_r((n % (10**(len(str(n)) - 1))) // 10)
+    return first_digit == last_digit and is_palindrome_recursive_r((n % (msd(n))) // 10)
 
 
-def is_palindrome_tail_recurse(n):
-    """
-    tail recursive version 
-    """
-    @tail_call_optimized
-    def helper(s: str, start: int, end: int):
-        if start >= end:
-            return True
-        if s[start] != s[end]: 
-            return False
-        return helper(s, start + 1, end - 1)  #jump in a level
-    s = str(n) #convert to string as its much easier to deal with 
-    return helper(s, 0, len(s) - 1) # call tail 
-    
 def pretty_print(res: bool):
-    if res:
-        print("It is a palindrome !!")
-    else:
-        print("It is not a palindrome")
+    print("It is a palindrome !!") if res else print("It is not a palindrome")
         
 def main():
     num = get_and_process_input(
@@ -81,7 +70,7 @@ def main():
         print("Recursive way")
         pretty_print(is_palindrome_recursive_r(num))
         print("Tail Recursive way")
-        pretty_print(is_palindrome_tail_recurse(num))
+        pretty_print(is_palindrome_recurse(num))
 
 if __name__ == "__main__":
     main()

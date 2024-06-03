@@ -32,8 +32,8 @@ def reverse_recurse(n: int):
     else:
         mo = n % 10 # first
         fl = n // 10 #lst
-        
-        return mo * 10**(len(str(n))-1) + reverse_recurse(fl)
+        # need to be able to handle the 0s
+        return mo * msd(n) + reverse_recurse(fl)
 
 def reverse_recursive_t(n: int):
     """

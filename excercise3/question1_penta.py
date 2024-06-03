@@ -1,8 +1,5 @@
 # %% Question 1 Pentagonal Numbers for values >=1 - ex3 (done)
 # Avraham Parshan 341419323
-import functools
-import os
-
 from tailrecurse import *
 
 # part a
@@ -43,11 +40,9 @@ def get_process_input(n1: int, n2: int):
     # check if n1 < n2, and n1, n2 >= 1 and both are ints
     if (isinstance(n1, int) and isinstance(n2, int) and n1 >= 1 and n2 > 1 and n1 < n2):
         return penta_num_range(n1, n2)
-        # return (n1,n2)
     else:
         return None
 
-# used for the recursive version
 
 
 def get_and_process_input():
@@ -92,8 +87,6 @@ def prnt(line):
     strLine = map(str, line)
     lstStr = ' '.join(strLine) + '\n'
     return lstStr
-#
-
 
 def print_functional(L):
     """
@@ -107,19 +100,15 @@ def print_with_recursive(pentaList: list, index:int=0):
     """
     Recursive version printing, with every 10 numbers getting a new line
     """
-    # Base case: if the index is out of bounds, return
-    if index >= len(pentaList):
+    if index >= len(pentaList): #index out of bounds - base
         return
 
-    # Print new line if needed
     if index > 0 and index % 10 == 0: #divisible by 10
-        print()
+        print() #new line for 10 breaks
 
-    # Print the current item without a newline
-    print(pentaList[index], end=" ")
+    print(pentaList[index], end=" ") #print curr
 
-    # Recur for the next item
-    print_with_recursive(pentaList, index + 1)
+    print_with_recursive(pentaList, index + 1) # go to next
 
 
 def main():
