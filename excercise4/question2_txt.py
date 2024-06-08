@@ -74,22 +74,30 @@ def occursumary(fldict: dict):
             vowel_count, consonants_b_count, consonants_n_count)
     return summary_dict
 
+def parsedict(fldict: dict):
+    """print in readable format without for loop"""
+    print("LineNr nr of vowels nr of b-m consonants nr of n-z consonants")
+    fn = lambda x: print(x, fldict[x])
+    list(map(fn, fldict.keys()))
+
+def summarydict(fldict: dict):
+    print("Nr of Lines in text total nr of vowels total nr of b-m consonants total nr of n-z consonants")
+    # print summary without for loops
+    lineNr = len(list(fldict.keys()))
+    vowels = sum([fldict[line][0] for line in fldict.keys()])
+    consonants_b = sum([fldict[line][1] for line in fldict.keys()])
+    consonants_n = sum([fldict[line][2] for line in fldict.keys()])
+    print(lineNr, vowels, consonants_b, consonants_n)
 
 def user_inp():
     """Get user input for file path."""
     fl = input("Please enter the file path: ")
-    print(occursumary(treatxtfile(fl)))
+    res = occursumary(treatxtfile(fl))
     print("")
-
+    parsedict(res)
+    summarydict(res)
 
 def main():
-    # print(treatline(1, "people enjoy programming \n"))
-    # escape the file path
-    fpath = "D:\\NewComp\\DevProjects\\JCT\\functional_logic\\python_code\\excercise4\\text.txt"
-    # # print(treatxtfile(fpath))
-    # print("LineNr nr of vowels nr of b-m consonants nr of n-z consonants")
-    # print(occursumary(treatxtfile(fpath)))
-
     user_inp()
 
 
