@@ -64,12 +64,17 @@ be a tuple of size 2 containing the grades’ average and the grades’ standard
     # process the teacher to display the information in desired format
     process_teacher = lambda teach: [
         # teach[0], 
+        get_students(teach),
         get_student_ids(get_students(teach)), 
         # get_stats(teach)
     ]
 
     # create dictionary
     return {teach[0]: process_teacher(teach) for teach in Lst}
+
+def getStudentsForTeacher(teach: str) -> list:
+    subj = [x[2] for x in teacherName if x[0] == teach][0]
+    return [x[0] for x in jctMarks if x[2] == subj]
 
 def getSubjFromTeacher(teach: str, teachList: list = teacherName):
     """
