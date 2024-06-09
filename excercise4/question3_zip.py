@@ -1,7 +1,9 @@
 
 # %% Question 3
 # Avraham Parshan 341419323
-from tailrecurse import *
+
+
+import sys
 
 
 def sortedzip(L):
@@ -27,8 +29,7 @@ def funczip(func, L):
 reversedzip), and a list of lists. The function will call func and pass L to it, and returns the result returned
 by func.
     """
-    return func(L)  # TODO see if right
-    # return zip(*[func(sublist) for sublist in L])
+    return func(L)  
 
 
 def unzippy(L):
@@ -57,15 +58,15 @@ def done():
 
 def main():
     L = [[3, 1, 2], [5, 6, 4], ['a', 'b', 'c']]
-    print(list(sortedzip(L)))
+    # print(list(sortedzip(L)))
 
-    print(list(reversedzip(L)))
+    # print(list(reversedzip(L)))
 
-    print(list(funczip(reversedzip, L)))
+    # print(list(funczip(reversedzip, L)))
 
-    print(list(unzippy(list(reversedzip(L)))))
+    # print(list(unzippy(list(reversedzip(L)))))
 
-    print("Menu")
+    print("Welcome to my program!")
 
     while True:
         li = eval(
