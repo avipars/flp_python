@@ -17,8 +17,8 @@ inanimateObjects = ("a stone", "a chair", "a car", "a sword",
                     "a bag", "a bus", "a hat", "a cat")
 
 
-# Generate a single sentence
-def generate_sentence():
+def generateSentence():
+    """Generate 1 sentence given a random choice"""
     person = random.choice(peopleNames)
     verb = random.choice(verbs)
     adjective = random.choice(adjectives)
@@ -31,11 +31,14 @@ def generate_sentence():
 
 @tail_call_optimized
 def crPoem(N, poem=""):
+    """
+    Tail recursive function to combine N sentences randomly generated
+    """
     if N <= 0:  # base case, no more poems to print
         return poem
-    sentence = generate_sentence()  # generate 1 sentence
+    sentence = generateSentence()  # generate 1 sentence
     # call 1 level down (append to string)
-    return crPoem(N - 1, poem + sentence + "\n")
+    return crPoem(N - 1, poem + sentence + "\n") # tail part
 
 
 def theHumblePoet(N):

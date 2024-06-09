@@ -84,14 +84,12 @@ def main():
             break
         elif choice not in menu:
             print("Invalid choice")
-
         else:
             print(f"After {menu[choice].__name__}:")
             print(list(menu[choice](li)))
             # apply unzippy & print
             print("After unzippy:")
             print(list(unzippy(menu[choice](li))))
-
 
 if __name__ == "__main__":
     main()

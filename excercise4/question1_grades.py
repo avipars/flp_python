@@ -53,8 +53,8 @@ def myStudDict(Lst):
     # create dictionary
     dic = {teach[0]: (teach[1], teach[2]) for teach in Lst}
     # add last element which is a tuple with average and std of all students
-    dic['All'] = (calculateAvg(jctMarks), calculateStandardDeviation(jctMarks))
-    return dic
+    dic['All'] = (calculateAvg(jctMarks), calculateStandardDeviation(jctMarks)) #key is All and value is list with avg, and std
+    return dic 
 
 
 def getGradesFromList(marks: list):
@@ -70,9 +70,9 @@ def calculateAvg(marks: list):
     given a list of marks, return the average
     """
     newL = getGradesFromList(marks)
-    if len(newL) == 0:
+    if len(newL) == 0: #nothing to do
         return None
-    return sum(newL) / len(newL)
+    return sum(newL) / len(newL) #mean 
 
 
 def calculateVariance(marks: list):
@@ -81,14 +81,14 @@ def calculateVariance(marks: list):
     """
     avg = calculateAvg(marks)
     grades = getGradesFromList(marks)
-    if len(grades) == 0:
+    if len(grades) == 0: #nothing to do
         return None
-    return sum((x - avg) ** 2 for x in grades) / len(grades)
+    return sum((x - avg) ** 2 for x in grades) / len(grades) #sigma with the cur - mu etc..
 
 
 def calculateStandardDeviation(marks: list):
     cv = calculateVariance(marks)
-    if cv == None:
+    if cv == None: # nothing to do 
         return None
     return calculateVariance(marks)**0.5  # square root of variance
 

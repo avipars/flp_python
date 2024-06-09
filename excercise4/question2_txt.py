@@ -5,26 +5,32 @@ from tailrecurse import *
 from functools import reduce
 import operator
 
-
+vow = set('aeiou')
+consonants_b = set('bcdfghjklm')
+consonants_n = set('npqrstvwxyz')
+    
 def categorize_characters(word):
-    """Categorize characters in the word into vowels and consonants in specified ranges."""
-    vow = set('aeiou')
-    consonants_b = set('bcdfghjklm')
-    consonants_n = set('npqrstvwxyz')
-    vowel_list = [char for char in word if char in vow]
-    consonants_b_to_m = [char for char in word if char in consonants_b]
-    consonants_n_to_z = [char for char in word if char in consonants_n]
+    """Categorize characters in the word into vowels and consonants in specified ranges.
+    return tuple and inside are lists of vowel chars in word, consonants b to m and consonants n to z
+    """
+    return (categorize(word,vow), categorize(word,consonants_b), categorize(word, consonants_n))
 
-    return (vowel_list, consonants_b_to_m, consonants_n_to_z)
+def categorize(word, letter_set):
+    """Given a word and set, find the occurrences of x and put in a list of chars"""
+    return [char for char in word if char in letter_set]
+
+def counter(word, letter_set):
+    """counts occurrences of x in word"""
+    return sum(1 for char in word if char in letter_set)
 
 
 def treatline(lineNr: int, line: str):
     """Process the line and return a dictionary with categorized characters."""
     if lineNr <= 0:
         return -1
+    line = line.lower()
 
-    words = line.strip().split()
-
+    words = line.strip().split() # clean the array 
     if not all(word.isalpha() for word in words):  # if non ascii chars
         return -1
 
@@ -37,11 +43,10 @@ def treatline(lineNr: int, line: str):
 def treatxtfile(flname: str):
     """Process the text file and return a list of dictionaries."""
     try:
-        with open(flname, 'r') as file:
+        with open(flname, 'r') as file: #open for reading
             return [treatline(i, line) for i, line in enumerate(file, 1)]
     except FileNotFoundError:
         return -1
-
 
 def occursumary(fldict: dict):
     """
@@ -52,26 +57,17 @@ def occursumary(fldict: dict):
     b and m that occur in that line, and the third element is the number of consonants between n and z that 
     occur in that line.
     """
-
-    # Function to count vowels in a word
-    def count_vowels(word):
-        return sum(1 for char in word if char.lower() in 'aeiou')
-
-    # Function to count consonants between b and m
-    def count_consonants_b_to_m(word):
-        return sum(1 for char in word if char.lower() in 'bcdfghjklm')
-
-    # Function to count consonants between n and z
-    def count_consonants_n_to_z(word):
-        return sum(1 for char in word if char.lower() in 'npqrstvwxyz')
+    vow = set('aeiou')
+    consonants_b = set('bcdfghjklm')
+    consonants_n = set('npqrstvwxyz')
 
     # Helper function to aggregate counts for a single line
     def aggregate_counts(word_dict):
-        vowels_count = sum(map(count_vowels, word_dict.keys()))
+        vowels_count = sum(map(counter, word_dict.keys(), vow))
         consonants_b_count = sum(
-            map(count_consonants_b_to_m, word_dict.keys()))
+            map(counter, word_dict.keys(), consonants_b))
         consonants_n_count = sum(
-            map(count_consonants_n_to_z, word_dict.keys()))
+            map(counter, word_dict.keys(), consonants_n))
         return (vowels_count, consonants_b_count, consonants_n_count)
 
     # Using map and reduce to build the summary dictionary without explicit loops
