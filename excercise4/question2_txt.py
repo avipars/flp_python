@@ -77,7 +77,7 @@ def occursumary(fldict: dict):
 def parsedict(fldict: dict):
     """print in readable format without for loop"""
     print("LineNr nr of vowels nr of b-m consonants nr of n-z consonants")
-    fn = lambda x: print(x, fldict[x])
+    fn = lambda x: print(f"{x}    {fldict[x]}")
     list(map(fn, fldict.keys()))
 
 def summarydict(fldict: dict):
@@ -87,7 +87,7 @@ def summarydict(fldict: dict):
     vowels = sum([fldict[line][0] for line in fldict.keys()])
     consonants_b = sum([fldict[line][1] for line in fldict.keys()])
     consonants_n = sum([fldict[line][2] for line in fldict.keys()])
-    print(lineNr, vowels, consonants_b, consonants_n)
+    print(f"{lineNr}     {vowels}       {consonants_b}     {consonants_n}")
 
 def user_inp():
     """Get user input for file path."""
