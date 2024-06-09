@@ -2,6 +2,8 @@
 # %% Question 2 text processing
 # Avraham Parshan 341419323
 from tailrecurse import *
+from functools import reduce
+import operator
 
 
 def categorize_characters(word):
@@ -40,45 +42,51 @@ def treatxtfile(flname: str):
     except FileNotFoundError:
         return -1
 
-# def occursumary(fldict:dict):
-#     """
-#     This function receives one parameter: fldict (a dictionary of the kind that the function treatxtfile
-#     returns). The function will create a new dictionary in which every key is the number of the corresponding
-#     line in the text file, and the value bound to it is a tuple containing three elements: the first element is the
-#     the number of vowels that occur in that line, the second element is the number of consonants between
-#     b and m that occur in that line, and the third element is the number of consonants between n and z that
-#     occur in that line.
-#     """
-#     #TODO finish this
-#     new_dict = {}
-#     for key, value in fldict.items():
-#         new_dict[key] = (sum(len(word[0]) for word in value.values()), sum(len(word[1]) for word in value.values()), sum(len(word[2]) for word in value.values()))
-#     return new_dict
-
 
 def occursumary(fldict: dict):
     """
-     This function receives one parameter: fldict (a dictionary of the kind that the function treatxtfile
-     returns). The function will create a new dictionary in which every key is the number of the corresponding 
-     line in the text file, and the value bound to it is a tuple containing three elements: the first element is the 
-     the number of vowels that occur in that line, the second element is the number of consonants between 
-     b and m that occur in that line, and the third element is the number of consonants between n and z that 
-     occur in that line.
+    This function receives one parameter: fldict (a dictionary of the kind that the function treatxtfile
+    returns). The function will create a new dictionary in which every key is the number of the corresponding 
+    line in the text file, and the value bound to it is a tuple containing three elements: the first element is the 
+    number of vowels that occur in that line, the second element is the number of consonants between 
+    b and m that occur in that line, and the third element is the number of consonants between n and z that 
+    occur in that line.
     """
-    summary_dict = {}
-    for lineNr, word_dict in fldict:
-        vowel_count = sum(len(word[0]) for word in word_dict.values())
-        consonants_b_count = sum(len(word[1]) for word in word_dict.values())
-        consonants_n_count = sum(len(word[2]) for word in word_dict.values())
-        summary_dict[lineNr] = (
-            vowel_count, consonants_b_count, consonants_n_count)
+
+    # Function to count vowels in a word
+    def count_vowels(word):
+        return sum(1 for char in word if char.lower() in 'aeiou')
+
+    # Function to count consonants between b and m
+    def count_consonants_b_to_m(word):
+        return sum(1 for char in word if char.lower() in 'bcdfghjklm')
+
+    # Function to count consonants between n and z
+    def count_consonants_n_to_z(word):
+        return sum(1 for char in word if char.lower() in 'npqrstvwxyz')
+
+    # Helper function to aggregate counts for a single line
+    def aggregate_counts(word_dict):
+        vowels_count = sum(map(count_vowels, word_dict.keys()))
+        consonants_b_count = sum(
+            map(count_consonants_b_to_m, word_dict.keys()))
+        consonants_n_count = sum(
+            map(count_consonants_n_to_z, word_dict.keys()))
+        return (vowels_count, consonants_b_count, consonants_n_count)
+
+    # Using map and reduce to build the summary dictionary without explicit loops
+    summary_dict = dict(
+        map(lambda line: (line[0], aggregate_counts(line[1])), fldict))
+
     return summary_dict
+
 
 def parsedict(fldict: dict):
     """print in readable format without for loop"""
     print("LineNr nr of vowels nr of b-m consonants nr of n-z consonants")
     fn = lambda x: print(f"{x}    {fldict[x]}")
     list(map(fn, fldict.keys()))
+
 
 def summarydict(fldict: dict):
     print("Nr of Lines in text total nr of vowels total nr of b-m consonants total nr of n-z consonants")
@@ -89,6 +97,7 @@ def summarydict(fldict: dict):
     consonants_n = sum([fldict[line][2] for line in fldict.keys()])
     print(f"{lineNr}     {vowels}       {consonants_b}     {consonants_n}")
 
+
 def user_inp():
     """Get user input for file path."""
     fl = input("Please enter the file path: ")
@@ -96,6 +105,7 @@ def user_inp():
     print("")
     parsedict(res)
     summarydict(res)
+
 
 def main():
     user_inp()
