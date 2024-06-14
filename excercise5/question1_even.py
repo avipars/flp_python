@@ -7,12 +7,14 @@ def evenprt(N1,N2,N3):
     print all even numbers between N1 and N2, and N3 numbers per line
     non - efficient way
     """
+    count = 0
     for i in range(N1,N2+1): # [N1,N2]
         if i % 2 == 0: # even numbers in range
             print(i, end=" ")
-            if (i-N1) % N3 == 0:  # print N3 numbers per line and 
-                print() 
-
+            count += 1 
+            if count % N3 == 0:  # print N3 numbers per line and 
+                print() # new line
+        
 def even_print(val):
     if val == "\n":
         print()
@@ -23,11 +25,13 @@ def evenprt_efficient(N1,N2,N3):
     """
     using generators - where we used to print, we now yield and then outside the function we print
     """
+    count = 0
     for i in range(N1,N2+1): # [N1,N2]
         if i % 2 == 0: # even numbers in range
-            yield i 
-            if (i-N1) % N3 == 0:  # print N3 numbers per line and 
-                yield "\n"  
+            yield i # yield instead of print
+            count += 1
+            if count % N3 == 0:  # print N3 numbers per line and 
+                yield "\n"   # yield new line
 
 def get_check_input():
     N1 = int(input("Enter a number N1: "))
@@ -53,8 +57,9 @@ def main():
     N1, N2, N3 = res # unpack tuple
     print("Non-efficient way:")
     evenprt(N1,N2,N3)
+    
     print("\nEfficient way:")
-    for i in evenprt_efficient(N1,N2,N3):
+    for i in evenprt_efficient(N1,N2,N3): # using generator
         even_print(i)
     
     
