@@ -38,19 +38,19 @@ def get_check_input():
         print("N1 is greater than or equal to N2, and therefore invalid")
         return False
         
-    diff = abs(N2 - N1)
     # N3 needs to be less than diff
-    if N3 >= diff:
+    if N3 >= abs(N2 - N1):
         print("N3 is greater than or equal to the difference between N2 and N1, and therefore invalid")
         return False
     
-    return N1, N2, N3
+    return N1, N2, N3 # return tuple
 
 def main():
     res = get_check_input()
-    if not res:
+    if not res: # if input is invalid
         sys.exit(1)
-    N1, N2, N3 = res
+        
+    N1, N2, N3 = res # unpack tuple
     print("Non-efficient way:")
     evenprt(N1,N2,N3)
     print("\nEfficient way:")
