@@ -1,5 +1,5 @@
 """
-Generator version of hw4 - poet question
+Generator version of hw4 - poet question from q3
 """
 import random
 
