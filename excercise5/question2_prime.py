@@ -53,8 +53,8 @@ def sieve(n):
         
         numbers = (i for i in numbers if all(i % p != 0 for p in primes)) #generator comprehension - remove multiples of all primes found so far
 
-def print_primes(N):
-    for i in sieve(N): # print each prime (from the yield in the generator)
+def print_primes(N, func):
+    for i in func(N): # print each prime (from the yield in the generator)
         print(i, end=" ") # print the prime separated by a space
     print() # new line
 
@@ -62,7 +62,7 @@ def prime_factors(N):
     """
     for N > 0, return list with all prime divisors of N 
     """
-    factors = [1]
+    factors = [1] # all numbers are multiples of 1 
     for i in sieve(N):
         if N % i == 0:
             factors.append(i)
@@ -72,9 +72,13 @@ def prime_factors(N):
 def prime_factors_generator(N):
     """
     for N > 0, return list with all prime divisors of N using generators
-    """
+    """ 
+    yield 1 #always a factor
+    for i in sieve(N): #use the napa gen function
+        if N % i == 0:
+            yield i #yield our result
     
-    pass
+
 def main():
     print("This program will print all prime numbers up to N")
     N = int(input("Enter a number N: "))
@@ -83,11 +87,13 @@ def main():
         sys.exit(1)
     print("All prime numbers up to", N, "are:")
     
-    print_primes(N)
+    print_primes(N, sieve)
 
     print("Prime factors of", N, "are:")
     print(prime_factors(N))
 
+    print("With generator")
+    print_primes(N, prime_factors_generator)        
     
 if __name__ == "__main__":
     main()
