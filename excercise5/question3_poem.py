@@ -31,8 +31,8 @@ def crPoem(N):
     """
     combine N sentences randomly generated
     """
-    for i in range(0,N):
-        yield generateSentence()
+    for i in range(0,N): # for N sentences
+        yield generateSentence() # yield the sentence
     
 def main():
     num = int(input("Enter number of lines for poem "))

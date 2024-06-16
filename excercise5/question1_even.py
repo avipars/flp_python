@@ -12,7 +12,7 @@ def evenprt(N1, N2, N3):
     for i in range(N1, N2 + 1):  # [N1,N2]
         if i % 2 == 0:  # even numbers in range
             print(i, end=" ")
-            count += 1
+            count += 1 # increment
             if count % N3 == 0:  # print N3 numbers per line and
                 print()  # new line
 
